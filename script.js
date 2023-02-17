@@ -100,11 +100,11 @@ $(function(){
 
 
 
-        // const reader = new FileReader();
+        const reader = new FileReader();
 
-        // reader.readAsText(files[0]);
+        reader.readAsText(files[0]);
          
-        // console.log(reader.result);
+        console.log(reader.result);
 
      
     });
