@@ -58,7 +58,7 @@ $(function(){
             records.forEach(number => {
 
                 console.log(number["id"]+ "hello");
-                //var current_emp = [number["id"]];
+                var current_emp = [number["id"]];
                 
                 if(!emp_at.includes(number["id"])){
                     emp_at.push(number["id"] );
@@ -78,7 +78,7 @@ $(function(){
 
                 records.forEach(number =>{
                     if(emp_num == number["id"]){
-                        //var time = new Date(number["time"]).toLocaleTimeString("en-US");
+                        var time = new Date(number["time"]).toLocaleTimeString("en-US");
                         if(number["time"] < 12){
                             console.log(number["time"] + "morning");
                         }else{
