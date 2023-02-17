@@ -78,7 +78,7 @@ $(function(){
 
                 records.forEach(number =>{
                     if(emp_num == number["id"]){
-                        var time = new Date(number["time"]).toLocaleTimeString("en-US");
+                       //var time = new Date(number["time"]).toLocaleTimeString("en-US");
                         if(number["time"] < 12){
                             console.log(number["time"] + "morning");
                         }else{
@@ -100,11 +100,6 @@ $(function(){
 
 
 
-        const reader = new FileReader();
-
-        reader.readAsText(files[0]);
-         
-        console.log(reader.result);
 
      
     });
