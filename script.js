@@ -60,7 +60,7 @@ $(function(){
             records.forEach(number => {
 
                 console.log(number["id"]+ "hello");
-                //var current_emp = [number["id"]];
+                var current_emp = [number["id"]];
                 
                 if(!emp_at.includes(number["id"])){
                     emp_at.push(number["id"] );
@@ -207,11 +207,6 @@ $(function(){
         }
 
 
-        // const reader = new FileReader();
-
-        // reader.readAsText(files[0]);
-         
-        // console.log(reader.result);
 
      
     });
@@ -222,7 +217,6 @@ $(function(){
     // })
 
 });
-
 
 function getTime(time){
     if(time != "ABSENT"){
