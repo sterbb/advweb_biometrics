@@ -186,9 +186,7 @@ $(function(){
             femployee_b.forEach(employee=>{
                 var biometrics_table = $("#biometrics > tbody");
                 var data = '<tr  class="bg-gray-500 text-white">';
-                var morning;
-                var afternoon;
-                
+           
                 data += '<td>'+employee[0] + '</td>'    
                 data += '<td>'+employee[1] + '</td>'
                 data += '<td>'+getTime(employee[2]) + '</td>'
@@ -200,9 +198,67 @@ $(function(){
 
                 biometrics_table.append(data);
             });
+            // id,morning late,afternoon late,total late,hours work
+            var work_late = [];
 
-            
+            femployee_b.forEach(time =>{
+                var hwork = 0;
+                var late = 0;
 
+                var morningti = time[2];
+                var morningto = time[3];
+                var afternoonti = time[4];
+                var afternoonto = time[5];
+                
+                var worklate = [];
+                
+                worklate.push(time[0]);
+
+                if(morningti != "ABSENT" && morningto != "ABSENT"){
+                    hwork += 4;
+                    if(morningti.getMinutes() > 30){
+                        worklate.push(morningti.getMinutes() - 30)
+                        late+= morningti.getMinutes() - 30
+                    }else{
+                        worklate.push(0);
+                
+                    }
+                }else{
+                    worklate.push("ABSENT");
+                }
+
+                if(afternoonti != "ABSENT" && afternoonto != "ABSENT"){
+                    hwork += 4;
+                    if(afternoonti.getMinutes() > 30){
+                        worklate.push(afternoonti.getMinutes() - 30)
+                        late+= afternoonti.getMinutes() - 30
+                    }else{
+                        worklate.push(0);
+                
+                    }
+                }else{
+                    worklate.push("ABSENT");
+                }
+                worklate.push(late);
+                worklate.push(hwork);
+                work_late.push(worklate);
+            });
+
+            work_late.forEach(h_l => {
+
+                var workhors_late_table = $("#hourswork_late > tbody");
+                var data = '<tr  class="bg-gray-500 text-white">';
+        
+                data += '<td>'+h_l[0] + '</td>'    
+                data += '<td>'+h_l[4] + '</td>'
+                data += '<td>'+h_l[1] + '</td>'
+                data += '<td>'+h_l[2] + '</td>'
+                data += '<td>'+h_l[3] + '</td>'
+                data+= '</tr>'
+
+
+                workhors_late_table.append(data);
+            })
 
         }
 
@@ -230,3 +286,18 @@ function getTime(time){
         return time;
     }
 }
+
+//optimize
+function calculate(){
+    if(morningti != "ABSENT" && morningto != "ABSENT"){
+        hwork += 4;
+        if(morningti.getMinutes() > 30){
+            worklate.push(morningti.getMinutes() - 30)
+        }else{
+            worklate.push(0);
+            console.log(worklate)
+        }
+    }
+}
+
+//table display
